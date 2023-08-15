@@ -1,0 +1,59 @@
+{
+  "name": "Fast Fashion Begone",
+  "action": {
+    "default_popup": "index.html"
+  },
+  "options_ui": {
+    "page": "index.html",
+    "open_in_tab": false
+  },
+  "manifest_version": 3,
+  "version": "0.1",
+  "description": "Remove selected fast fashion brands from Vinted",
+  "permissions": [
+    "scripting",
+    "webRequest",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://vinted.pl/*",
+    "https://www.vinted.pl/*",
+    "https://vinted.at/*",
+    "https://www.vinted.at/*",
+    "https://vinted.be/*",
+    "https://www.vinted.be/*",
+    "https://vinted.ca/*",
+    "https://www.vinted.ca/*",
+    "https://vinted.cz/*",
+    "https://www.vinted.cz/*",
+    "https://vinted.de/*",
+    "https://www.vinted.de/*",
+    "https://vinted.es/*",
+    "https://www.vinted.es/*",
+    "https://vinted.fr/*",
+    "https://www.vinted.fr/*",
+    "https://vinted.hu/*",
+    "https://www.vinted.hu/*",
+    "https://vinted.it/*",
+    "https://www.vinted.it/*",
+    "https://vinted.lt/*",
+    "https://www.vinted.lt/*",
+    "https://vinted.ro/*",
+    "https://www.vinted.ro/*",
+    "https://vinted.lu/*",
+    "https://www.vinted.lu/*",
+    "https://vinted.se/*",
+    "https://www.vinted.se/*",
+    "https://vinted.nl/*",
+    "https://www.vinted.nl/*",
+    "https://vinted.sk/*",
+    "https://www.vinted.sk/*",
+    "https://vinted.co.uk/*",
+    "https://www.vinted.co.uk/*",
+    "https://vinted.com/*",
+    "https://www.vinted.com/*"
+  ],
+  "background": {
+    "service_worker": "service-worker.js"
+  }
+}

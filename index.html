@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Fast Fashion Begone · Options</title>
+
+    <style>
+      :root {
+        --main: #007782;
+        --gray: #f2f2f2;
+        --gray-dark: #171717;
+        --focus: #01464d;
+        --radius: 4px;
+      }
+
+      ::selection {
+        color: white;
+        background: var(--main);
+      }
+
+      body {
+        width: 300px;
+        display: flex;
+        flex-direction: column;
+        margin: 24px;
+        gap: 16px;
+      }
+
+      label {
+        font-weight: 500;
+      }
+
+      #brands {
+        width: -webkit-fill-available;
+        font-family: inherit;
+        font-size: inherit;
+        background: var(--gray);
+        border: 2px solid var(--gray);
+        padding: 8px;
+        border-radius: var(--radius);
+        resize: none;
+      }
+
+      #brands:focus {
+        border: 2px solid var(--focus);
+        outline: none;
+      }
+
+      #save {
+        font-family: inherit;
+        font-size: inherit;
+        border-radius: var(--radius);
+        width: 100%;
+        padding: 8px;
+        color: white;
+        background: var(--main);
+        border: 2px solid var(--main);
+        font-size: 1.2em;
+        cursor: pointer;
+        font-weight: 500;
+      }
+
+      #save:hover {
+        background-color: var(--focus);
+        border: 2px solid var(--focus);
+      }
+
+      #save:focus {
+        border: 2px solid var(--focus);
+        outline: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <label for="brands">Brands to exclude (comma separated, case insensitive):</label>
+    <textarea id="brands" name="brands" placeholder="eg. primark, shein, h&m..."></textarea>
+    <button id="save">Save</button>
+
+    <script src="options.js"></script>
+  </body>
+</html>
