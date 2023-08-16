@@ -23,6 +23,7 @@ const saveOptions = () => {
 const restoreOptions = () => {
   chrome.storage.sync.get({ brands: [] }, ({ brands }) => {
     document.querySelector("#brands").value = brands.join(", ");
+    handleInput({ target: document.querySelector("#brands") });
   });
 };
 
