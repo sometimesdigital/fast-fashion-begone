@@ -10,7 +10,7 @@ This Chrome browser extension aims to filter out specified brands from Vinted in
 
 ##### Installation
 1. [Download this repository](https://github.com/nonnullish/fast-fashion-begone/archive/refs/heads/main.zip) and unpack the downloaded `.zip` archive.
-2. Go to [chrome://extensions/](chrome://extensions/) and toggle the developer mode on.
+2. Go to `chrome://extensions/` in the browser URL bar and toggle the developer mode on.
 3. Click “Load unpacked” and upload the unpacked folder.
 4. Click on the extension button and specify the brands that you don't want to see.
 
