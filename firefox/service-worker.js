@@ -39,15 +39,22 @@ const urls = [
 
 const begone = async () => {
   const { brands } = await browser.storage.local.get("brands");
+  const { hideUnbranded } = await browser.storage.local.get("hideUnbranded");
 
-  if (!brands) {
+  if (!brands && !hideUnbranded) {
     return;
   }
 
   const brandTags = Array.from(document.querySelectorAll(".new-item-box__description:last-of-type h4"));
 
   brandTags
-    .filter(item => brands.some(brand => item.innerText.toLowerCase().includes(brand.toLowerCase())))
+    .filter(item => {
+      if (hideUnbranded && !item.innerText) {
+        return true;
+      }
+
+      return brands.some(brand => item.innerText.toLowerCase().includes(brand.toLowerCase()))
+    })
     .map(item => item.closest('article') || item.closest('.feed-grid__item'))
     .forEach(item => {
       item.innerHTML = "";

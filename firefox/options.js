@@ -13,16 +13,22 @@ const saveConfirmed = () => {
   setTimeout(() => {
     button.innerText = "Save";
   }, 750);
+
+  browser.tabs.reload();
 };
 
 const saveOptions = async () => {
   const brands = getBrands();
-  await browser.storage.local.set({ brands: brands });
+  const hideUnbranded = document.querySelector('#hideUnbranded').checked;
+  await browser.storage.local.set({ brands, hideUnbranded });
   saveConfirmed();
 };
 
 const restoreOptions = async () => {
   const { brands } = await browser.storage.local.get("brands");
+  const { hideUnbranded } = await browser.storage.local.get("hideUnbranded");
+
+  document.querySelector("#hideUnbranded").checked = hideUnbranded;
 
   if (!brands) {
     return;
@@ -40,4 +46,3 @@ const handleInput = ({ target }) => {
 document.addEventListener("DOMContentLoaded", restoreOptions);
 document.querySelector("#save").addEventListener("click", saveOptions);
 document.querySelector("#brands").addEventListener("input", handleInput);
-
