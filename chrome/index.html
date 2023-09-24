@@ -45,6 +45,19 @@
         outline: none;
       }
 
+      fieldset {
+        border: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        gap: 1ch;
+        align-items: center;
+      }
+
+      input {
+        accent-color: var(--main);
+      }
+
       #save {
         font-family: inherit;
         font-size: inherit;
@@ -74,6 +87,10 @@
   <body>
     <label for="brands">Brands to exclude (comma separated, case insensitive):</label>
     <textarea id="brands" name="brands" placeholder="eg. primark, shein, h&m..."></textarea>
+    <fieldset>
+      <input type="checkbox" id="hideUnbranded" name="hideUnbranded" />
+      <label for="hideUnbranded">Hide unbranded items</label>
+    </fieldset>
     <button id="save">Save</button>
 
     <script src="options.js"></script>

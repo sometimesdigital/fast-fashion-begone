@@ -39,12 +39,17 @@ const urls = [
 
 const begone = () => {
   chrome.storage.sync.get(
-    { brands: [] },
-    ({ brands }) => {
+    { brands: [], hideUnbranded: false },
+    ({ brands, hideUnbranded }) => {
       const brandTags = Array.from(document.querySelectorAll(".new-item-box__description:last-of-type h4"));
-
       brandTags
-        .filter(item => brands.some(brand => item.innerText.toLowerCase().includes(brand.toLowerCase())))
+        .filter(item => {
+          if (hideUnbranded && !item.innerText) {
+            return true;
+          }
+
+          return brands.some(brand => item.innerText.toLowerCase().includes(brand.toLowerCase()))
+          })
         .map(item => item.closest('article') || item.closest('.feed-grid__item'))
         .forEach(item => {
           item.innerHTML = "";
