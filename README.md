@@ -13,7 +13,7 @@ This browser browser extension aims to filter out specified brands from Vinted i
 For Firefox, the extension can be added from Firefox Browser Add-Ons under this link: [https://addons.mozilla.org/en-GB/firefox/addon/fast-fashion-begone/](https://addons.mozilla.org/en-GB/firefox/addon/fast-fashion-begone/).
 
 #### Chrome
-1. Download the file [fast-fashion-begone-chrome.zip](https://github.com/nonnullish/fast-fashion-begone/releases/download/v0.0.1/fast-fashion-begone-chrome.zip).
+1. Download the file [fast-fashion-begone-chrome.zip](https://github.com/nonnullish/fast-fashion-begone/releases/download/v0.0.2/fast-fashion-begone-chrome.zip).
 2. Unpack the downloaded `.zip` archive.
 3. Go to `chrome://extensions/` in the browser URL bar and toggle the developer mode on.
 4. Click “Load unpacked” and upload the unpacked folder.
