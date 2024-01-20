@@ -45,7 +45,7 @@ const begone = async () => {
     return;
   }
 
-  const brandTags = Array.from(document.querySelectorAll(".new-item-box__description:last-of-type h4"));
+  const brandTags = Array.from(document.querySelectorAll(".new-item-box__description:last-of-type p"));
 
   brandTags
     .filter(item => {

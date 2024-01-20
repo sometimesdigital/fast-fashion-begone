@@ -41,7 +41,7 @@ const begone = () => {
   chrome.storage.sync.get(
     { brands: [], hideUnbranded: false },
     ({ brands, hideUnbranded }) => {
-      const brandTags = Array.from(document.querySelectorAll(".new-item-box__description:last-of-type h4"));
+      const brandTags = Array.from(document.querySelectorAll(".new-item-box__description:last-of-type p"));
       brandTags
         .filter(item => {
           if (hideUnbranded && !item.innerText) {
