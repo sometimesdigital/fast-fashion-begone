@@ -39,18 +39,19 @@ const urls = [
 
 const begone = () => {
   chrome.storage.sync.get(
-    { brands: [], hideUnbranded: false },
-    ({ brands, hideUnbranded }) => {
-      const brandTags = Array.from(document.querySelectorAll(".new-item-box__description:last-of-type p"));
-      brandTags
-        .filter(item => {
-          if (hideUnbranded && !item.innerText) {
-            return true;
-          }
+    { brands: [] },
+    ({ brands }) => {
+      const brandTags = Array.from(document.querySelectorAll(".new-item-box__container"));
 
-          return brands.some(brand => item.innerText.toLowerCase().includes(brand.toLowerCase()))
-          })
-        .map(item => item.closest('article') || item.closest('.feed-grid__item'))
+      brandTags
+        .filter(item => brands.some(brand => item.textContent.toLowerCase().includes(brand.toLowerCase())))
+        .map((item) =>
+          item.closest("article") ||
+          item.closest(".closet__item") ||
+          item.closest(".closet__item--collage") ||
+          item.closest(".feed-grid__item") ||
+          item.closest(".item-view-items__item")
+        )
         .forEach(item => {
           item.innerHTML = "";
           item.style.display = "contents";

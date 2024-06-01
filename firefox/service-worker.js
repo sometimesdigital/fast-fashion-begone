@@ -39,23 +39,17 @@ const urls = [
 
 const begone = async () => {
   const { brands } = await browser.storage.local.get("brands");
-  const { hideUnbranded } = await browser.storage.local.get("hideUnbranded");
-
-  if (!brands && !hideUnbranded) {
-    return;
-  }
-
-  const brandTags = Array.from(document.querySelectorAll(".new-item-box__description:last-of-type p"));
+  const brandTags = Array.from(document.querySelectorAll(".new-item-box__container"));
 
   brandTags
-    .filter(item => {
-      if (hideUnbranded && !item.innerText) {
-        return true;
-      }
-
-      return brands.some(brand => item.innerText.toLowerCase().includes(brand.toLowerCase()))
-    })
-    .map(item => item.closest('article') || item.closest('.feed-grid__item'))
+    .filter(item => brands.some(brand => item.innerText.toLowerCase().includes(brand.toLowerCase())))
+    .map((item) =>
+      item.closest("article") ||
+      item.closest(".closet__item") ||
+      item.closest(".closet__item--collage") ||
+      item.closest(".feed-grid__item") ||
+      item.closest(".item-view-items__item")
+    )
     .forEach(item => {
       item.innerHTML = "";
       item.style.display = "contents";

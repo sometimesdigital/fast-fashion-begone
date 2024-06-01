@@ -19,16 +19,12 @@ const saveConfirmed = () => {
 
 const saveOptions = async () => {
   const brands = getBrands();
-  const hideUnbranded = document.querySelector('#hideUnbranded').checked;
-  await browser.storage.local.set({ brands, hideUnbranded });
+  await browser.storage.local.set({ brands });
   saveConfirmed();
 };
 
 const restoreOptions = async () => {
   const { brands } = await browser.storage.local.get("brands");
-  const { hideUnbranded } = await browser.storage.local.get("hideUnbranded");
-
-  document.querySelector("#hideUnbranded").checked = hideUnbranded;
 
   if (!brands) {
     return;

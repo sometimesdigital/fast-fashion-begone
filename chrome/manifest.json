@@ -14,7 +14,7 @@
     "open_in_tab": false
   },
   "manifest_version": 3,
-  "version": "0.3",
+  "version": "0.4",
   "description": "Remove selected fast fashion brands from Vinted",
   "permissions": [
     "scripting",

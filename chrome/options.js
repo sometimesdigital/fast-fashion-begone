@@ -19,13 +19,11 @@ const saveConfirmed = () => {
 
 const saveOptions = () => {
   const brands = getBrands();
-  const hideUnbranded = document.querySelector('#hideUnbranded').checked;
-  chrome.storage.sync.set({ brands, hideUnbranded }, saveConfirmed);
+  chrome.storage.sync.set({ brands }, saveConfirmed);
 };
 
 const restoreOptions = () => {
-  chrome.storage.sync.get({ brands: [], hideUnbranded: false }, ({ brands, hideUnbranded }) => {
-    document.querySelector("#hideUnbranded").checked = hideUnbranded;
+  chrome.storage.sync.get({ brands: [] }, ({ brands }) => {
     document.querySelector("#brands").value = brands.join(", ");
     handleInput({ target: document.querySelector("#brands") });
   });
