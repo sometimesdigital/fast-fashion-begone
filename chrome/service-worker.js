@@ -38,7 +38,7 @@ const urls = [
 ];
 
 const begone = () => {
-  chrome.storage.sync.get(
+  chrome.storage.local.get(
     { brands: [] },
     ({ brands }) => {
       const brandTags = Array.from(document.querySelectorAll(".new-item-box__container"));

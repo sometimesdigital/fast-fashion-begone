@@ -19,11 +19,11 @@ const saveConfirmed = () => {
 
 const saveOptions = () => {
   const brands = getBrands();
-  chrome.storage.sync.set({ brands }, saveConfirmed);
+  chrome.storage.local.set({ brands }, saveConfirmed);
 };
 
 const restoreOptions = () => {
-  chrome.storage.sync.get({ brands: [] }, ({ brands }) => {
+  chrome.storage.local.get({ brands: [] }, ({ brands }) => {
     document.querySelector("#brands").value = brands.join(", ");
     handleInput({ target: document.querySelector("#brands") });
   });
