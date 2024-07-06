@@ -1,48 +1,61 @@
 const urls = [
-  "https://vinted.pl/*",
-  "https://www.vinted.pl/*",
-  "https://vinted.at/*",
-  "https://www.vinted.at/*",
-  "https://vinted.be/*",
-  "https://www.vinted.be/*",
-  "https://vinted.ca/*",
-  "https://www.vinted.ca/*",
-  "https://vinted.cz/*",
-  "https://www.vinted.cz/*",
-  "https://vinted.de/*",
-  "https://www.vinted.de/*",
-  "https://vinted.es/*",
-  "https://www.vinted.es/*",
-  "https://vinted.fr/*",
-  "https://www.vinted.fr/*",
-  "https://vinted.hu/*",
-  "https://www.vinted.hu/*",
-  "https://vinted.it/*",
-  "https://www.vinted.it/*",
-  "https://vinted.lt/*",
-  "https://www.vinted.lt/*",
-  "https://vinted.ro/*",
-  "https://www.vinted.ro/*",
-  "https://vinted.lu/*",
-  "https://www.vinted.lu/*",
-  "https://vinted.se/*",
-  "https://www.vinted.se/*",
-  "https://vinted.nl/*",
-  "https://www.vinted.nl/*",
-  "https://vinted.sk/*",
-  "https://www.vinted.sk/*",
-  "https://vinted.co.uk/*",
-  "https://www.vinted.co.uk/*",
-  "https://vinted.com/*",
-  "https://www.vinted.com/*"
+  "https://www.vinted.pl/api/v2/catalog/items*",
+  "https://www.vinted.pl/api/v2/promoted_closets*",
+  "https://www.vinted.at/api/v2/catalog/items*",
+  "https://www.vinted.at/api/v2/promoted_closets*",
+  "https://www.vinted.be/api/v2/catalog/items*",
+  "https://www.vinted.be/api/v2/promoted_closets*",
+  "https://www.vinted.ca/api/v2/catalog/items*",
+  "https://www.vinted.ca/api/v2/promoted_closets*",
+  "https://www.vinted.cz/api/v2/catalog/items*",
+  "https://www.vinted.cz/api/v2/promoted_closets*",
+  "https://www.vinted.de/api/v2/catalog/items*",
+  "https://www.vinted.de/api/v2/promoted_closets*",
+  "https://www.vinted.es/api/v2/catalog/items*",
+  "https://www.vinted.es/api/v2/promoted_closets*",
+  "https://www.vinted.fr/api/v2/catalog/items*",
+  "https://www.vinted.fr/api/v2/promoted_closets*",
+  "https://www.vinted.hu/api/v2/catalog/items*",
+  "https://www.vinted.hu/api/v2/promoted_closets*",
+  "https://www.vinted.it/api/v2/catalog/items*",
+  "https://www.vinted.it/api/v2/promoted_closets*",
+  "https://www.vinted.lt/api/v2/catalog/items*",
+  "https://www.vinted.lt/api/v2/promoted_closets*",
+  "https://www.vinted.ro/api/v2/catalog/items*",
+  "https://www.vinted.ro/api/v2/promoted_closets*",
+  "https://www.vinted.lu/api/v2/catalog/items*",
+  "https://www.vinted.lu/api/v2/promoted_closets*",
+  "https://www.vinted.se/api/v2/catalog/items*",
+  "https://www.vinted.se/api/v2/promoted_closets*",
+  "https://www.vinted.nl/api/v2/catalog/items*",
+  "https://www.vinted.nl/api/v2/promoted_closets*",
+  "https://www.vinted.sk/api/v2/catalog/items*",
+  "https://www.vinted.sk/api/v2/promoted_closets*",
+  "https://www.vinted.co.uk/api/v2/catalog/items*",
+  "https://www.vinted.co.uk/api/v2/promoted_closets*",
+  "https://www.vinted.com/api/v2/catalog/items*",
+  "https://www.vinted.com/api/v2/promoted_closets*",
 ];
 
 const begone = async () => {
   const { brands } = await browser.storage.local.get("brands");
-  const brandTags = Array.from(document.querySelectorAll(".new-item-box__container"));
+  const { exactMatching } = await browser.storage.local.get("exactMatching");
+  const brandTags = [...document.querySelectorAll(".new-item-box__description:first-of-type")].map((node) => node.childNodes[0]);
+  const compare = (itemContent, inputText) => {
+    return exactMatching
+      ? itemContent.trim().toLowerCase() === inputText.trim().toLowerCase()
+      : itemContent.toLowerCase().includes(inputText.toLowerCase());
+  };
 
   brandTags
-    .filter(item => brands.some(brand => item.innerText.toLowerCase().includes(brand.toLowerCase())))
+    .filter((item) =>
+      brands.some((brand) =>
+        compare(
+          item.textContent.trim().toLowerCase(),
+          brand.trim().toLowerCase()
+        )
+      )
+    )
     .map((item) =>
       item.closest("article") ||
       item.closest(".closet__item") ||

@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>Fast Fashion Begone · Options</title>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
 
     <style>
       :root {
@@ -19,14 +19,16 @@
       }
 
       body {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+          "Segoe UI Symbol";
         font-size: 12px;
         width: 300px;
         display: flex;
         flex-direction: column;
         margin: 24px;
         gap: 16px;
-              }
+      }
 
       label {
         font-weight: 600;
@@ -89,7 +91,11 @@
 
   <body>
     <label for="brands">Brands to exclude (comma separated, case insensitive):</label>
-    <textarea id="brands" name="brands" placeholder="eg. primark, shein, h&m..."></textarea>
+    <textarea rows="4" id="brands" name="brands" placeholder="eg. primark, shein, h&m..."></textarea>
+    <fieldset>
+      <input type="checkbox" id="exactMatching" name="exactMatching" />
+      <label for="exactMatching">Exact text comparison  </label>
+    </fieldset>
     <button id="save">Save</button>
 
     <script src="options.js"></script>

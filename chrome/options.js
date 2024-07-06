@@ -19,21 +19,16 @@ const saveConfirmed = () => {
 
 const saveOptions = () => {
   const brands = getBrands();
-  chrome.storage.local.set({ brands }, saveConfirmed);
+  const exactMatching = document.querySelector('#exactMatching').checked;
+  chrome.storage.local.set({ brands, exactMatching }, saveConfirmed);
 };
 
 const restoreOptions = () => {
-  chrome.storage.local.get({ brands: [] }, ({ brands }) => {
+  chrome.storage.local.get({ brands: [], exactMatching: false }, ({ brands, exactMatching }) => {
+    document.querySelector("#exactMatching").checked = exactMatching;
     document.querySelector("#brands").value = brands.join(", ");
-    handleInput({ target: document.querySelector("#brands") });
   });
 };
 
-const handleInput = ({ target }) => {
-  target.style.height = "0px";
-  target.style.height = `${target.scrollHeight}px`;
-}
-
 document.addEventListener("DOMContentLoaded", restoreOptions);
 document.querySelector("#save").addEventListener("click", saveOptions);
-document.querySelector("#brands").addEventListener("input", handleInput);

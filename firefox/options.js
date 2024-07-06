@@ -19,26 +19,22 @@ const saveConfirmed = () => {
 
 const saveOptions = async () => {
   const brands = getBrands();
-  await browser.storage.local.set({ brands });
+  const exactMatching = document.querySelector('#exactMatching').checked;
+  await browser.storage.local.set({ brands, exactMatching });
   saveConfirmed();
 };
 
 const restoreOptions = async () => {
   const { brands } = await browser.storage.local.get("brands");
+  const { exactMatching } = await browser.storage.local.get("exactMatching");
 
   if (!brands) {
     return;
   }
 
   document.querySelector("#brands").value = brands.join(", ");
-  handleInput({ target: document.querySelector("#brands") });
+  document.querySelector("#exactMatching").checked = exactMatching;
 };
-
-const handleInput = ({ target }) => {
-  target.style.height = "0px";
-  target.style.height = `${target.scrollHeight}px`;
-}
 
 document.addEventListener("DOMContentLoaded", restoreOptions);
 document.querySelector("#save").addEventListener("click", saveOptions);
-document.querySelector("#brands").addEventListener("input", handleInput);
