@@ -20,7 +20,7 @@ For Firefox, the extension can be added from Firefox Browser Add-Ons under this 
 5. Click on the extension button next to the URL bar and specify the brands that you don't want to see.
 
 ### Known issues
-If Vinted changes its layout, this extension will likely break. In that case, please let me know by opening an issue in this repository or send me an e-mail at nonnullish[at]sometimes.digital.
+If Vinted changes its layout, this extension will likely break. In that case, please let me know by opening an issue in this repository or send me an e-mail at dominika[at]sometimes.digital.
 
 ### Privacy
 No data is sent or collected. When the page loads, the items get hidden. 
