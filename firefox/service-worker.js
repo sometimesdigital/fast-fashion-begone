@@ -24,11 +24,7 @@ const domains = [
   "com",
 ];
 
-const urls = domains.flatMap((domain) => [
-  `https://www.vinted.${domain}/api/v2/catalog/items*`,
-  `https://www.vinted.${domain}/api/v2/promoted_closets*`,
-  `https://www.vinted.${domain}/api/v2/feed/events*`,
-]);
+const urls = domains.map((domain) => `https://www.vinted.${domain}/api/v2/*`);
 
 const begone = async () => {
   const { brands } = await browser.storage.local.get("brands");
