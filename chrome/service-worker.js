@@ -30,36 +30,32 @@ const begone = () => {
   chrome.storage.local.get(
     { brands: [], exactMatching: false },
     ({ brands, exactMatching }) => {
-      const brandTags = [...document.querySelectorAll(".new-item-box__description:first-of-type")].map((node) => node.childNodes[0]);
-      const compare = (itemContent, inputText) => {
-        return exactMatching
-          ? itemContent.trim().toLowerCase() === inputText.trim().toLowerCase()
-          : itemContent.toLowerCase().includes(inputText.toLowerCase());
-      };
+    const brandNodes = [...document.querySelectorAll(".new-item-box__description:first-of-type:first-child")];
 
-      brandTags
-        .filter((item) =>
-          brands.some((brand) =>
-            compare(
-              item.textContent.trim().toLowerCase(),
-              brand.trim().toLowerCase()
-            )
-          )
-      )
-      .map(
-        (item) =>
-          item.closest("article") ||
-          item.closest(".closet__item") ||
-          item.closest(".closet__item--collage") ||
-          item.closest(".feed-grid__item") ||
-          item.closest(".item-view-items__item")
-      )
-      .forEach((item) => {
-        item.innerHTML = "";
-        item.style.display = "contents";
-      });
-    }
-  );
+    const compare = (itemContent, inputText) => {
+      return exactMatching
+        ? itemContent.trim().toLowerCase() === inputText.trim().toLowerCase()
+        : itemContent.toLowerCase().includes(inputText.toLowerCase());
+    };
+
+    brandNodes.forEach((item) => {
+      const shouldHide = brands.some((brand) => compare(item.textContent, brand));
+
+      if (!shouldHide) {
+        return;
+      }
+
+      const parent =
+        item.closest("article") ||
+        item.closest(".closet__item") ||
+        item.closest(".closet__item--collage") ||
+        item.closest(".feed-grid__item") ||
+        item.closest(".item-view-items__item");
+
+      parent.innerHTML = "";
+      parent.style.display = "none";
+    });
+  });
 };
 
 chrome.webRequest.onCompleted.addListener(
