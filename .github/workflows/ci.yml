@@ -1,7 +1,8 @@
 name: Create release
 
 on:
-  workflow_dispatch:
+  release:
+    types: [published]
 
 permissions:
   contents: write
@@ -34,9 +35,9 @@ jobs:
       - name: Build Firefox release
         run: pnpm build:firefox
 
-      - name: Release
-        uses: softprops/action-gh-release@v2
-        with:
-          files: |
-            dist_chrome/dist_chrome.zip
-            dist_firefox/dist_firefox.zip
+      - name: "Create release"
+        run: |
+          gh release upload ${{github.event.release.tag_name}} dist_chrome/dist_chrome.zip dist_firefox/dist_firefox.zip
+        env:
+          GITHUB_TOKEN: ${{ github.TOKEN }}
+        shell: bash
