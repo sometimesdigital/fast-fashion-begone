@@ -1,0 +1,28 @@
+body {
+  margin: 0;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
+    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  position: relative;
+}
+
+.tags-wrapper {
+  overflow: auto;
+  flex: 1;
+  border-color: var(--input);
+  border-style: var(--tw-border-style);
+  border-width: 1px;
+  border-radius: calc(var(--radius) - 2px);
+  > div:first-child {
+    flex: 1;
+    height: 100%;
+    overflow: auto;
+    > div:first-child {
+      > div:first-child {
+        border: none;
+      }
+    }
+  }
+}

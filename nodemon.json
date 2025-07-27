@@ -1,0 +1,9 @@
+{
+  "env": {
+    "mode": "development"
+  },
+  "watch": ["src", "utils", "vite.config.ts", "manifest.json"],
+  "ext": "tsx,css,html,ts,json",
+  "ignore": ["src/**/*.test.ts"],
+  "exec": "vite build --config vite.config.ts"
+}

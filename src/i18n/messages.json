@@ -1,0 +1,40 @@
+{
+  "en": {
+    "translation": {
+      "Clear all": "Clear all",
+      "Clear all the brands?": "Clear all the brands?",
+      "Cancel": "Cancel",
+      "Continue": "Continue",
+      "Copied": "Copied",
+      "Copy all": "Copy all",
+      "Brands to exclude": "Brands to exclude",
+      "Only exact matches": "Only exact matches",
+      "Reload page": "Reload page",
+      "eg. Shein, Zara...": "eg. Shein, Zara...",
+      "help": {
+        "list": "The brands listed below will be hidden from the search results and the recommended items on Vinted. You can paste a list of brands (separated by a comma). The changes are saved automatically.",
+        "exactMatching": "For example, with this option enabled, \"H&M\" will not match \"H&M Home\" or \"H&M Kids\".",
+        "clearAll": "This action cannot be undone. This will permanently delete all the brands in the list."
+      }
+    }
+  },
+  "pl": {
+    "translation": {
+      "Clear all": "Usuń całą listę",
+      "Clear all the brands?": "Czy usunąć wszystkie marki?",
+      "Cancel": "Anuluj",
+      "Continue": "Kontynuuj",
+      "Copied": "Skopiowano",
+      "Copy all": "Skopiuj wszystko",
+      "Brands to exclude": "Pomijane marki",
+      "Only exact matches": "Tylko dokładne wyniki",
+      "Reload page": "Przeładuj stronę",
+      "np. Shein, Zara...": "np. Shein, Zara...",
+      "help": {
+        "list": "Marki z listy będą pomijane w wynikach wyszukiwania oraz w rekomendacjach na Vinted. Oddzielaj marki przecinkiem. Możesz wkleić listę marek (oddzielonych przecinkiem). Zmiany są zapisywane automatycznie.",
+        "exactMatching": "Jeżeli ta opcja jest włączona, to na przykład marka \"H&M\" nie będzie obejmować \"H&M Home\" albo \"H&M Kids\".",
+        "clearAll": "Wszystkie marki z listy zostaną usunięte. Tej operacji nie można cofnąć."
+      }
+    }
+  }
+}
