@@ -1,6 +1,6 @@
 {
   "name": "fast-fashion-begone",
-  "version": "0.10",
+  "version": "0.11",
   "description": "Remove selected fast fashion brands from Vinted",
   "license": "MIT",
   "repository": {
