@@ -16,7 +16,7 @@ import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { type Tag, TagInput } from "emblor";
-import { IconBrandDiscord, IconCup } from "@tabler/icons-react";
+import { IconWorldWww, IconBrandInstagram, IconCup } from "@tabler/icons-react";
 import { ClearAll } from "./components/ClearAll";
 import { CopyButton } from "./components/CopyButton";
 const stringsToTags = (strings: string[]) =>
@@ -198,15 +198,37 @@ export const Popup = () => {
             asChild
             variant="secondary"
             type="button"
-            title={t("Discord")}
+            title={t("sometimes.digital")}
           >
-            <a title={t("Discord")} href="https://discord.gg/PquukD7S">
-              <IconBrandDiscord />
+            <a
+              title={t("sometimes.digital")}
+              href="https://sometimes.digital"
+              target="_blank"
+            >
+              <IconWorldWww />
             </a>
           </Button>
           <Button asChild variant="secondary" type="button" title={t("Ko-fi")}>
-            <a title={t("Ko-fi")} href="https://ko-fi.com/sometimesdigital">
+            <a
+              title={t("Ko-fi")}
+              href="https://ko-fi.com/sometimesdigital"
+              target="_blank"
+            >
               <IconCup />
+            </a>
+          </Button>
+          <Button
+            asChild
+            variant="secondary"
+            type="button"
+            title={t("Instagram")}
+          >
+            <a
+              title={t("Instagram")}
+              href="https://instagram.com/sometimes.digital"
+              target="_blank"
+            >
+              <IconBrandInstagram />
             </a>
           </Button>
         </div>
