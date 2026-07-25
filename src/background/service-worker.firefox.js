@@ -47,13 +47,7 @@ const begone = async () => {
       return;
     }
 
-    const parent =
-      item.closest("article") ||
-      item.closest(".closet__item") ||
-      item.closest(".closet__item--collage") ||
-      item.closest(".feed-grid__item") ||
-      item.closest(".item-view-items__item") ||
-      item.closest('[data-testid="feed-item"]').parentElement;
+    const parent = item.closest('[data-testid="grid-item"]');
 
     parent.innerHTML = "";
     parent.style.display = "none";
