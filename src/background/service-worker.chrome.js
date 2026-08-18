@@ -28,11 +28,7 @@ const begone = () => {
   chrome.storage.local.get(
     { brands: [], exactMatching: false },
     ({ brands, exactMatching }) => {
-      const brandNodes = [
-        ...document.querySelectorAll(
-          ".new-item-box__description:first-of-type:first-child",
-        ),
-      ];
+      const items = [...document.querySelectorAll('[data-testid="grid-item"]')];
 
       const compare = (itemContent, inputText) => {
         return exactMatching
@@ -40,19 +36,21 @@ const begone = () => {
           : itemContent.toLowerCase().includes(inputText.toLowerCase());
       };
 
-      brandNodes.forEach((item) => {
-        const shouldHide = brands.some((brand) =>
-          compare(item.textContent, brand),
+      items.forEach((item) => {
+        const textNodes = [...item.querySelectorAll("span, p")].map(
+          (element) => element.innerText,
+        );
+
+        const shouldHide = textNodes.some((text) =>
+          brands.some((brand) => compare(text, brand)),
         );
 
         if (!shouldHide) {
           return;
         }
 
-        const parent = item.closest('[data-testid="grid-item"]');
-
-        parent.innerHTML = "";
-        parent.style.display = "none";
+        item.innerHTML = "";
+        item.style.display = "none";
       });
     },
   );
